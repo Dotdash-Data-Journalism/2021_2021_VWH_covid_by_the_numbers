@@ -5,6 +5,7 @@ import numpy as np
 from datetime import datetime, date
 import time
 from datawrapper import Datawrapper
+import os
 
 ACCESS_TOKEN = os.getenv('DW_API_KEY')
 
