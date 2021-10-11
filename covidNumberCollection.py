@@ -96,7 +96,7 @@ def mutateCDCData(df):
 
 ##### Getting latest Covid JSON from VWDJ Github
 
-cdcUpdate = getCovidJSON("https://github.com/anesta95/Covid_by_the_numbers_Verywell/blob/main/cdcCovid.json")
+cdcUpdate = getCovidJSON("https://raw.githubusercontent.com/Dotdash-Data-Journalism/Covid_by_the_numbers_Verywell/main/cdcCovid.json")
 
 cdcData = cdcUpdate[0]
 cdcUpdateDate = cdcUpdate[1]
