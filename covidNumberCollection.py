@@ -151,7 +151,7 @@ if fileDate != jsonDate:
 
     updateChart('60PT0', casesMap, cdcUpdateDate, ACCESS_TOKEN)
 
-    # Not needed when state-level community transmission map not available
+    # Not needed when state-level community transmission map not available  
     # time.sleep(2)
 
     # transmissionMap = cdcClean[['name', 'state_level_community_transmission']]
