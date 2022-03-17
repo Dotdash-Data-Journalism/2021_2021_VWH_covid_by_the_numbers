@@ -67,7 +67,8 @@ def updateChart(dw_chart_id, dataSet, updateDate, dw_api_key):
 ### Function to do data manipulation to initial CDC Dataframe
 
 def mutateCDCData(df):
-    cdcDataColumns = df[["abbr", "name", "fips", "tot_cases", "new_cases07", "tot_death", "new_deaths07", "state_level_community_transmission"]]
+    # Removed "state_level_community_transmission", can re-add when it re-appears
+    cdcDataColumns = df[["abbr", "name", "fips", "tot_cases", "new_cases07", "tot_death", "new_deaths07"]] 
 
     unneededRows = ["60", "64", "69", "72", "70", "68", "00", "78"]
 
@@ -81,10 +82,12 @@ def mutateCDCData(df):
 
     fullNYST = pd.DataFrame(fullNYS).transpose()
 
-    nysTrans = cdcBadNY[cdcBadNY['fips'] == "36"]
-    nysTransV = nysTrans.state_level_community_transmission.item()
+    # Not needed when by-state community map isn't available
+    # nysTrans = cdcBadNY[cdcBadNY['fips'] == "36"]
+    # nysTransV = nysTrans.state_level_community_transmission.item()
 
-    fullNYST['abbr'], fullNYST['name'], fullNYST['fips'], fullNYST['state_level_community_transmission'] = ["NY", "New York", "36", nysTransV]
+    # Removed fullNYST['state_level_community_transmission'] & nysTransV can re-add 
+    fullNYST['abbr'], fullNYST['name'], fullNYST['fips'] = ["NY", "New York", "36"]
 
     noNY = cdcBadNY[~(cdcBadNY['fips'].isin(['36', '57']))]
 
@@ -148,13 +151,14 @@ if fileDate != jsonDate:
 
     updateChart('60PT0', casesMap, cdcUpdateDate, ACCESS_TOKEN)
 
-    time.sleep(2)
+    # Not needed when state-level community transmission map not available
+    # time.sleep(2)
 
-    transmissionMap = cdcClean[['name', 'state_level_community_transmission']]
-    transmissionMap.sort_values(by=['name'])
-    transmissionMap.rename(columns={
-        'name': 'Names',
-        'state_level_community_transmission': 'Values'
-    })
+    # transmissionMap = cdcClean[['name', 'state_level_community_transmission']]
+    # transmissionMap.sort_values(by=['name'])
+    # transmissionMap.rename(columns={
+    #     'name': 'Names',
+    #     'state_level_community_transmission': 'Values'
+    # })
 
-    updateChart('DPnc2', transmissionMap, cdcUpdateDate, ACCESS_TOKEN)
+    # updateChart('DPnc2', transmissionMap, cdcUpdateDate, ACCESS_TOKEN)
