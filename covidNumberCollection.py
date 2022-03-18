@@ -99,7 +99,7 @@ def mutateCDCData(df):
 
 ##### Getting latest Covid JSON from VWDJ Github
 
-cdcUpdate = getCovidJSON("https://raw.githubusercontent.com/Dotdash-Data-Journalism/Covid_by_the_numbers_Verywell/main/cdcCovid.json")
+cdcUpdate = getCovidJSON("https://raw.githubusercontent.com/Dotdash-Data-Journalism/Covid_by_the_numbers_Verywell/main/data/cdcCovid.json")
 
 cdcData = cdcUpdate[0]
 cdcUpdateDate = cdcUpdate[1]
@@ -113,7 +113,7 @@ jsonDate = cdcUpdateDate.date()
 
 # If there is new data, update the charts
 if fileDate != jsonDate:
-    cdcClean.to_csv('cdcData.csv', index=False)
+    cdcClean.to_csv('./visualizations/cdcData.csv', index=False)
 
     genBar = cdcClean[['name', 'tot_cases', 'new_cases07', 'tot_death', 'new_deaths07']]
 

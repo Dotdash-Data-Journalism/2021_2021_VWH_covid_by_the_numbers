@@ -3,7 +3,7 @@ name: Scrape latest data
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '46 * * * *'
+    - cron:  '57 * * * *'
 
 jobs:
   scheduled:
@@ -17,7 +17,7 @@ jobs:
         fetch-depth: 0
     - name: Fetch latest data
       run: |-
-        curl https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=US_MAP_DATA | jq . > cdcCovid.json
+        curl https://covid.cdc.gov/covid-data-tracker/COVIDData/getAjaxData?id=US_MAP_DATA | jq . > ./data/cdcCovid.json
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
