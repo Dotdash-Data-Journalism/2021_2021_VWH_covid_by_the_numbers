@@ -106,7 +106,7 @@ cdcUpdateDate = cdcUpdate[1]
 
 cdcClean = mutateCDCData(cdcData)
 
-cdcToday = pd.read_csv('cdcData.csv', header=0)
+cdcToday = pd.read_csv('./visualizations/cdcData.csv', header=0)
 
 fileDate = datetime.strptime(cdcToday['Update_Date'][0], "%Y-%m-%d").date()
 jsonDate = cdcUpdateDate.date()
