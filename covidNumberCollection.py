@@ -125,7 +125,7 @@ if fileDate != jsonDate:
         'new_cases07': 'NEW CASES LAST 7 DAYS',
         'tot_death': 'TOTAL DEATHS',
         'new_deaths07': 'NEW DEATHS LAST 7 DAYS'
-    })
+    }, inplace=True)
 
     updateChart('kK8S7', genBar, cdcUpdateDate, ACCESS_TOKEN)
 
@@ -136,7 +136,7 @@ if fileDate != jsonDate:
     deathMap.rename(columns={
         'name': 'Names',
         'tot_death': 'Values'
-    })
+    }, inplace=True)
 
     updateChart('sLHpR', deathMap, cdcUpdateDate, ACCESS_TOKEN)
 
@@ -147,7 +147,7 @@ if fileDate != jsonDate:
     casesMap.rename(columns={
         'name': 'Names',
         'tot_cases': 'Values'
-    })
+    }, inplace=True)
 
     updateChart('60PT0', casesMap, cdcUpdateDate, ACCESS_TOKEN)
 
